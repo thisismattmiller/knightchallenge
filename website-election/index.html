@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/leaflet.css">
+
+        <!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.1.0.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" style="background-color: #ABB7B7;">
+      <div class="container">
+        <h1>Knight News Challenge:<br>Elections</h1>
+        <p>This page attempts to visualize some simple analysis performed on 1020 <a href="https://www.newschallenge.org/challenge/elections/">Knight News Challenge</a> entries.</p>
+        <p>View past challege: <a href="http://tools.nypl-labs.biz/knightchallenge-analysis/">Libraries as Platform</a><br>Built by <a href="https://twitter.com/thisismmiller">@thisismmiller</a> from <a href="https://twitter.com/nypl_labs">@nypl_labs</a>.</p>
+
+
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h2>Location</h2>
+      <div id="map"></div>
+
+
+
+      <!-- Example row of columns -->
+       <br>
+      <h2>Word Frequency</h2>
+      <p>Top 100 nouns, noun phrases and verbs used in all submissions.</p>
+      <div class="row">
+
+        <div class="col-md-4 word-freq" id="word-freq-nouns">
+          <h3>Nouns</h3>
+        </div>
+        <div class="col-md-4 word-freq" id="word-freq-nouns-phrases">
+          <h3>Noun Phrases</h3>
+        </div>
+        <div class="col-md-4 word-freq" id="word-freq-verbs">
+          <h3>Verbs</h3>
+        </div>
+      </div>
+      <br>
+      <h2>Related Submissions</h2>
+      <p>A <a href="http://en.wikipedia.org/wiki/Tf%E2%80%93idf">tf–idf</a> graph connecting submissions that contained similar unique words showing possible trends important topics. Note: Only about 120 of 680 entries appear in the graph. Use the mouse to zoom in.</p>
+      <div id="network">
+
+
+      </div>
+
+      <br>
+      <h2>Author Gender</h2>
+      <p>Using a highly inaccurate lookup of the author’s first name.</p>
+
+
+      <ul class="graph">
+        <li id="bar-notsure" style="left:3%; background-color:#8e44ad">Not Sure</li>
+        <li id="bar-female" style="left:34.5%; background-color: #16a085" >Female Name</li>
+        <li id="bar-male" style="left:66%; background-color:#f39c12">Male Name</li>
+      </ul>
+
+
+
+      <br>
+      <h2>Download data and source code</h2>
+      <p><a href="data.json.zip">Download dataset</a></p>
+      <p><a href="https://github.com/thisismattmiller/knightchallenge">Source code</a></p>
+
+
+
+
+
+      <footer>
+        <p></p>
+      </footer>
+    </div> <!-- /container -->        
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/leaflet.js"></script>
+        <script src="js/vendor/sigma.min.js"></script>
+        <script src="js/vendor/plugins/sigma.parsers.gexf.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+
+
+
+    </body>
+</html>

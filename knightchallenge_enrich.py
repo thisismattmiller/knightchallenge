@@ -4,11 +4,17 @@
 import json, time, string, tfidf
 from geopy.geocoders import GoogleV3
 from nameparser import HumanName
-import sexmachine.detector as gender
-from nltk.corpus import stopwords
-from textblob import Word, TextBlob
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as etree
+
+#python 3
+import ner
+from nltk.corpus import stopwords
+from textblob import Word, TextBlob
+
+#python 2 only
+#import sexmachine.detector as gender
+
 
 class knightEnrich:
 
@@ -28,8 +34,7 @@ class knightEnrich:
 			print (len(self.data['entries']))
 
 
-		self.geolocator = GoogleV3()
-
+		#self.geolocator = GoogleV3()
 
 		#self.enrichLocation()
 
@@ -37,13 +42,16 @@ class knightEnrich:
 
 		#self.enrichData()
 		
-		#self.enrichURL()
+		self.enrichURL()
 
-		#self.outPutMapFile()
+		self.outPutMapFile()
 
 		self.outPutGender()
 
 		self.buildGexf()
+
+
+		#self.entityExtract()
 
 		self.writeDataOut()
 
@@ -412,7 +420,53 @@ class knightEnrich:
 			print("~~~~~~~~~")
 
 
+	def entityExtract(self):
 
+
+		tagger = ner.SocketNER(host='localhost', port=1234)
+
+
+		for entry in self.data['entries']:
+
+			print("Doing",entry['id'])
+
+			allText = ""
+
+			if entry['description']:
+				allText += " " + entry['description']
+
+			if entry['need']:
+				allText += " " + entry['need']
+
+			if entry['oneSentence']:
+				allText += " " + entry['oneSentence']
+
+			if entry['outcome']:
+				allText += " " + entry['outcome']
+
+			if entry['progress']:
+				allText += " " +  entry['progress']
+
+			if entry['summary']:
+				allText += " " + entry['summary']
+
+			if entry['team']:
+				allText += " " + entry['team']
+
+			if entry['title']:
+				allText += " " + entry['title']
+
+			allText = allText.replace("\n",' ').replace("\t",' ').replace("\"",'').lower()
+
+			
+
+			r = tagger.get_entities(allText)
+
+			if len(r) > 0:
+				#print (unittitle.parent.parent.unittitle)
+				print (allText)
+				print ("--------------------------")
+				print ( r)
 
 
 
@@ -429,6 +483,8 @@ class knightEnrich:
 			if entry['location'] != None:
 
 				if entry['location'].strip() != '':
+
+
 
 					entry['location'] = entry['location'].replace("\n",' ')
 

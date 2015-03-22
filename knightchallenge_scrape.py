@@ -10,7 +10,8 @@ import requests,sys, string, json, time
 class knightScrape:
 
 
-	firstPage = "https://newschallenge.org/challenge/libraries/submissions/centralize-government-customer-service"
+	#firstPage = "https://newschallenge.org/challenge/libraries/submissions/centralize-government-customer-service"
+	firstPage = "https://www.newschallenge.org/challenge/elections/entries/let-your-voice-be-heard"
 	baseUrl = "https://newschallenge.org"
 	dataDir = "pages/"
 	activeUrl = ""
@@ -277,5 +278,5 @@ if __name__ == "__main__":
 
 	ks = knightScrape()
 
-	#ks.storePages()
+	ks.storePages()
 	ks.processPages()
